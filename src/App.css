@@ -1,38 +1,56 @@
+body {
+  margin: 0;
+}
 .App {
+  display: grid;
+  background-color: rgb(145, 145, 145);
+  place-items: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.App__container {
+  max-width: 500px;
+  max-height: 1000px;
+  background-color: aliceblue;
+  border-radius: 25px;
+  padding: 25px;
+}
+
+.balance {
+  margin-top: 25px;
+  margin-bottom: 25px;
+}
+.balance__title,
+.balance__count {
+  padding: 0;
+  margin: 0;
+}
+
+.Balance__table {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+}
+
+.Balance__table > div:first-of-type {
+  border-right: 1px solid #dedede;
+}
+
+.Balance__income {
+  flex: 1;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Balance__income > p {
+  color: rgb(25, 255, 25);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.Balance__outcome {
+  flex: 1;
+  text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Balance__outcome > p {
+  color: rgb(216, 50, 50);
 }
