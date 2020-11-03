@@ -2,7 +2,7 @@ import React from "react";
 
 export const Header = () => {
   return (
-    <div className="Header">
+    <div>
       <h1>Expense Tracker</h1>
     </div>
   );

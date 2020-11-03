@@ -36,11 +36,11 @@ export const IncomeBalance = () => {
     <BalanceTable>
       <Balance>
         <h2>Income</h2>
-        <BalanceIncome>{"$0.00" || income}</BalanceIncome>
+        <BalanceIncome>{"+$0.00" || income}</BalanceIncome>
       </Balance>
       <Balance>
         <h2>Outcome</h2>
-        <BalanceOutcome>{"$0.00" || outcome}</BalanceOutcome>
+        <BalanceOutcome>{"-$0.00" || outcome}</BalanceOutcome>
       </Balance>
     </BalanceTable>
   );

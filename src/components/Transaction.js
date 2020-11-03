@@ -1,34 +1,38 @@
 import React from "react";
 import styled from "@emotion/styled";
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
+export const Transaction = ({ transaction }) => {
+  const sign = transaction.amount < 0 ? "-" : "+";
+  const bg = sign === "+" ? "green" : "pink";
 
-const FormGroup = styled.div`
-  > h5 {
-    margin: 0;
-  }
-  > input {
+  const TransactionItem = styled.li`
+    display: flex;
     width: 100%;
-  }
-`;
-export const Transaction = () => {
+    background-color: ${bg};
+    justify-content: space-between;
+    padding: 10px;
+    position: relative;
+    & > button {
+      border: 0;
+      position: absolute;
+      left: 0;
+      opacity: 1;
+      & :hover {
+        opacity: 0;
+      }
+    }
+    & > span {
+      background-color: white;
+    }
+  `;
+
   return (
-    <div>
-      <h4>Add new transaction</h4>
-      <Form>
-        <FormGroup>
-          <h5>Text</h5>
-          <input type="text" placeholder="Enter text.." />
-        </FormGroup>
-        <FormGroup>
-          <h5>Amount (negative-expense, posistive-income)</h5>
-          <input type="number" placeholder="Enter amount.." />
-        </FormGroup>
-        <button type="submit">Add transaction</button>
-      </Form>
-    </div>
+    <TransactionItem>
+      {transaction.text}
+      <span>
+        {sign}${Math.abs(transaction.amount)}
+      </span>
+      <button>X</button>
+    </TransactionItem>
   );
 };

@@ -1,12 +1,12 @@
 import React from "react";
-import { Balance } from "./components/Balance";
-import { Header } from "./components/Header";
-import { History } from "./components/History";
-import { IncomeBalance } from "./components/IncomeExpense";
-import { Transaction } from "./components/Transaction";
+import { Balance } from "./Balance";
+import { Header } from "./Header";
+import { TransactionList } from "./TransactionList";
+import { IncomeBalance } from "./IncomeExpense";
+import { TransactionForm } from "./TransactionForm";
 
 import styled from "@emotion/styled";
-import imagePath from "./assets/background.jpg";
+import imagePath from "../assets/background.jpg";
 
 const AppContainer = styled.div`
   display: grid;
@@ -34,8 +34,8 @@ function App() {
         <Header />
         <Balance />
         <IncomeBalance />
-        <History />
-        <Transaction />
+        <TransactionList />
+        <TransactionForm />
       </div>
     </AppContainer>
   );

@@ -12,12 +12,12 @@ const BalanceDetails = styled.div`
 `;
 
 export const Balance = () => {
-  const [balanceCount, setBalanceCount] = useState();
+  const [balance, setBalance] = useState();
 
   return (
     <BalanceDetails>
       <h4>Your Balance</h4>
-      <h1 className="balance__count">{"$0.00" || balanceCount}</h1>
+      <h1>{"$0.00" || balance}</h1>
     </BalanceDetails>
   );
 };
