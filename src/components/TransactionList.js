@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Transaction } from "./Transaction";
 import { Store } from "../context/GlobalContext";
 import styled from "@emotion/styled";
@@ -11,20 +11,16 @@ const TransactionTable = styled.div`
 `;
 
 export const TransactionList = () => {
-  // transaction = object.transaction
-  const context = useContext(Store);
-  const [{ state }, dispatch] = useState(context);
-  const transaction = state.transaction;
+  // transaction = object.transaction > destructuring
+  const { state } = useContext(Store);
 
   return (
     <TransactionTable>
       <h3>History</h3>
       <ul>
-        {transaction &&
-          transaction.length > 0 &&
-          transaction.map((item) => (
-            <Transaction key={item.id} transaction={item} />
-          ))}
+        {state &&
+          state.length > 0 &&
+          state.map((item) => <Transaction key={item.id} transaction={item} />)}
       </ul>
     </TransactionTable>
   );

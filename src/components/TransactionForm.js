@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import { Store } from "../context/GlobalContext";
 
 import styled from "@emotion/styled";
@@ -6,6 +6,9 @@ import styled from "@emotion/styled";
 const Form = styled.form`
   display: flex;
   flex-direction: column;
+  & > h4 {
+    border-bottom: 1px solid black;
+  }
 `;
 
 const FormGroup = styled.div`
@@ -18,38 +21,33 @@ const FormGroup = styled.div`
 `;
 
 export const TransactionForm = () => {
-  const { state, dispatch } = useContext(Store);
-  const [balance, setBalance] = useState({
-    id: 0,
-    text: "",
-    amount: 0,
-  });
+  const { addTransaction } = useContext(Store);
+  const [text, setText] = useState("");
+  const [amount, setAmount] = useState(0);
 
-  useEffect(() => {
-    console.log(balance);
-    console.log(state);
-  }, [balance]);
-
-  const AddTransaction = (e) => {
+  const SubmitTransaction = (e) => {
     e.preventDefault();
-    console.log("push");
-    dispatch({
-      type: "PUSH",
-      item: balance,
-    });
-    console.log(balance);
+
+    const newTransaction = {
+      id: Math.floor(Math.random() * 1000000),
+      text,
+      amount: +amount,
+    };
+    addTransaction(newTransaction);
+    setText("");
+    setAmount(0);
   };
 
   return (
     <div>
       <h4>Add new transaction</h4>
-      <Form onSubmit={AddTransaction}>
+      <Form onSubmit={SubmitTransaction}>
         <FormGroup>
           <h5>Text</h5>
           <input
             type="text"
-            value={balance.text}
-            onChange={(e) => setBalance({ ...balance, text: e.target.value })}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             placeholder="Enter text.."
           />
         </FormGroup>
@@ -57,12 +55,12 @@ export const TransactionForm = () => {
           <h5>Amount (negative-expense, posistive-income)</h5>
           <input
             type="number"
-            value={balance.amount}
-            onChange={(e) => setBalance({ ...balance, amount: e.target.value })}
+            value={amount}
+            onChange={(e) => setAmount(e.target.value)}
             placeholder="Enter amount.."
           />
         </FormGroup>
-        <button type="submit">Add transaction</button>
+        <button>Add transaction</button>
       </Form>
     </div>
   );

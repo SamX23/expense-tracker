@@ -1,5 +1,5 @@
 # Expense Tracker
 
-Created using React, planned to finish it as a PWA.
+Created using React and PWA.
 
 [Inspiration]("https://vanillawebprojects.com/projects/expense-tracker/")

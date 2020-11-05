@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useContext } from "react";
+import { Store } from "../context/GlobalContext";
+
 import styled from "@emotion/styled";
 
 const BalanceDetails = styled.div`
@@ -12,12 +14,18 @@ const BalanceDetails = styled.div`
 `;
 
 export const Balance = () => {
-  const [balance, setBalance] = useState();
+  const { state } = useContext(Store);
+
+  const amounts = state.map((transaction) => transaction.amount);
+  const total =
+    amounts.length > 0 && amounts.reduce((acc, item) => (acc += item));
 
   return (
     <BalanceDetails>
       <h4>Your Balance</h4>
-      <h1>{"$0.00" || balance}</h1>
+      <h1>
+        {total < 0 ? "-" : ""}${Math.abs(total).toFixed(2)}
+      </h1>
     </BalanceDetails>
   );
 };
