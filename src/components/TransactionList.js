@@ -3,10 +3,15 @@ import { Transaction } from "./Transaction";
 import { Store } from "../context/GlobalContext";
 import styled from "@emotion/styled";
 
-const TransactionTable = styled.div`
-  > h3 {
+const TransactionHistory = styled.div`
+  & > h3 {
     padding-bottom: 5px;
     border-bottom: 1px solid black;
+  }
+
+  & > ul {
+    margin: 0;
+    padding: 0;
   }
 `;
 
@@ -15,13 +20,13 @@ export const TransactionList = () => {
   const { state } = useContext(Store);
 
   return (
-    <TransactionTable>
+    <TransactionHistory>
       <h3>History</h3>
       <ul>
         {state &&
           state.length > 0 &&
           state.map((item) => <Transaction key={item.id} transaction={item} />)}
       </ul>
-    </TransactionTable>
+    </TransactionHistory>
   );
 };

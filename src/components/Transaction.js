@@ -12,27 +12,38 @@ export const Transaction = ({ transaction }) => {
     width: 100%;
     background-color: ${bg};
     justify-content: space-between;
-    padding: 10px;
+    padding: 10px 0;
     position: relative;
+
+    & > .Transaction__text {
+      margin-left: 25px;
+    }
+
+    & > .Transaction__amount {
+      font-weight: 900;
+      margin-right: 20px;
+    }
+
     & > button {
-      border: 0;
+      height: 100%;
       position: absolute;
+      top: 0;
       left: 0;
+      background-color: red;
+      font-weight: 900;
       opacity: 1;
+      border: 0;
       & :hover {
         opacity: 0;
       }
-    }
-    & > span {
-      background-color: white;
     }
   `;
 
   return (
     <TransactionItem>
-      {transaction.text}
-      <span>
-        {sign}${Math.abs(transaction.amount)}
+      <span className="Transaction__text">{transaction.text}</span>
+      <span className="Transaction__amount">
+        {sign} ${Math.abs(transaction.amount)}
       </span>
       <button onClick={() => deleteTransaction(transaction.id)}>X</button>
     </TransactionItem>

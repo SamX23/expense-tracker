@@ -13,16 +13,14 @@ const AppContainer = styled.div`
   display: grid;
   background-color: rgb(235, 235, 235);
   place-items: center;
-  width: 100vw;
-  max-height: 100vh;
+  width: 100%;
 `;
 
 const Container = styled.div`
   background-image: url(${imagePath});
   background-size: cover;
-  width: 450px;
-  max-height: 1000px;
-  border-radius: 25px;
+  max-width: 450px;
+  width: 100%;
   padding: 25px;
   border: 1px dotted dodgerblue;
 `;

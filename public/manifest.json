@@ -3,9 +3,9 @@
   "name": "Expense Tracker App",
   "icons": [
     {
-      "src": "/images.logo.png",
+      "src": "/images/icon.png",
       "type": "image/png",
-      "sizes": "1024x1024"
+      "sizes": "64x64"
     }
   ],
   "start_url": ".",

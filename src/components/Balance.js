@@ -6,10 +6,14 @@ import styled from "@emotion/styled";
 const BalanceDetails = styled.div`
   margin-top: 25px;
   margin-bottom: 25px;
-  > h4,
+  & > h3,
   h1 {
     margin: 0;
     padding: 0;
+  }
+
+  & > h3 {
+    border-bottom: 1px solid black;
   }
 `;
 
@@ -22,9 +26,9 @@ export const Balance = () => {
 
   return (
     <BalanceDetails>
-      <h4>Your Balance</h4>
+      <h3>Your Balance</h3>
       <h1>
-        {total < 0 ? "-" : ""}${Math.abs(total).toFixed(2)}
+        {total < 0 ? "-" : ""} ${Math.abs(total).toFixed(2)}
       </h1>
     </BalanceDetails>
   );

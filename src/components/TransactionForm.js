@@ -3,11 +3,24 @@ import { Store } from "../context/GlobalContext";
 
 import styled from "@emotion/styled";
 
+const TransactionFormTable = styled.div`
+  display: flex;
+  flex-direction: column;
+  & > h3 {
+    border-bottom: 1px solid black;
+  }
+`;
+
 const Form = styled.form`
   display: flex;
   flex-direction: column;
   & > h4 {
     border-bottom: 1px solid black;
+  }
+
+  & > button {
+    width: 100%;
+    border: 0;
   }
 `;
 
@@ -39,11 +52,11 @@ export const TransactionForm = () => {
   };
 
   return (
-    <div>
-      <h4>Add new transaction</h4>
+    <TransactionFormTable>
+      <h3>Add new transaction</h3>
       <Form onSubmit={SubmitTransaction}>
         <FormGroup>
-          <h5>Text</h5>
+          <h5>Transaction Name</h5>
           <input
             type="text"
             value={text}
@@ -52,7 +65,7 @@ export const TransactionForm = () => {
           />
         </FormGroup>
         <FormGroup>
-          <h5>Amount (negative-expense, posistive-income)</h5>
+          <h5>Amount (negative = expense, posistive = income)</h5>
           <input
             type="number"
             value={amount}
@@ -60,8 +73,8 @@ export const TransactionForm = () => {
             placeholder="Enter amount.."
           />
         </FormGroup>
-        <button>Add transaction</button>
+        <button>Add Transaction</button>
       </Form>
-    </div>
+    </TransactionFormTable>
   );
 };
